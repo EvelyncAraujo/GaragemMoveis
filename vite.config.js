@@ -11,9 +11,9 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'apple-touch-icon.png', 'masked-icon.svg'],
       manifest: {
-        name: 'Fake Store',
-        short_name: 'FakeStore',
-        description: 'Fake Store: Fantástica loja de produtos',
+        name: 'Garagem',
+        short_name: 'Aula tutorial',
+        description: 'Loja fake tutorial',
         theme_color: '#ffffff',
         icons: [
           {
