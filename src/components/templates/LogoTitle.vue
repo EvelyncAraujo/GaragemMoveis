@@ -2,7 +2,7 @@
 <template>
   <div class="logo">
     <img src="@/assets/logo.png" alt="FakeStore Logo" />
-    <h2>testando a fakestore</h2>
+    <h2>Garagem   </h2>
   </div>
 </template>
 
