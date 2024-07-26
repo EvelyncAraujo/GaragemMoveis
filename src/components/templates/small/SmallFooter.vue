@@ -1,88 +1,57 @@
 <script setup>
-import { ref } from 'vue';
-import { onBeforeRouteUpdate } from 'vue-router';
+import { useAuthStore } from '@/stores/auth';
 
-const showMenu = ref(false);
-
-onBeforeRouteUpdate(() => {
-  showMenu.value = false;
-});
+const authStore = useAuthStore();
 </script>
+
 <template>
-    <div id="footerMenu" :style="{ display: showMenu ? 'block' : 'none' }">
-      <RouterLink to="/">
-        <i class="mdi mdi-home-outline" />
-        Home
-      </RouterLink>
-      <RouterLink to="/login">
-        <i class="mdi mdi-account" />
-        Login
-      </RouterLink>
-    </div>
-    <div class="icons">
-      <RouterLink to="/">
-        <i class="mdi mdi-home-outline" />
-        Home
-      </RouterLink>
-      <RouterLink to="/">
-        <i class="mdi mdi-account-circle-outline" />
-        Perfil
-      </RouterLink>
-      <RouterLink to="/">
-        <i class="mdi mdi-cart-outline" />
-        Carrinho
-      </RouterLink>
-  
-      <div class="hamburger" @click="showMenu = !showMenu">
-        <i class="mdi mdi-menu" />
-        Menu
+  <div class="pages">
+    <RouterLink to="/acessorios"> Acessórios </RouterLink>
+    <RouterLink to="/categorias"> Categorias </RouterLink>
+    <RouterLink to="/cores"> Cores </RouterLink>
+    <RouterLink to="/marcas"> Marcas </RouterLink>
+    <div class="divider" />
+      <div v-if="authStore.loggedIn">
+      <router-link  to="/logout">Logout</router-link> 
+        {{ authStore.user.email }}
       </div>
+      <router-link v-else to="/login">Login</router-link>
     </div>
-  </template>
+</template>
+
 <style scoped>
 #footerMenu {
-    position: fixed;
-    bottom: 15%;
-    right: 0;
+  position: fixed;
+  bottom: 15%;
+  right: 0;
 
-    width: 20%;
-    border-top: #EEEEEE 1px solid;
-    background-color: white;
+  width: 20%;
+  border-top: #eeeeee 1px solid;
+  background-color: white;
 
-    display: block;
-    padding: 1rem;
+  display: block;
+  padding: 1rem;
 }
 
-#footerMenu a {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    text-decoration: none;
-    color: #282828;
-    font-size: 1rem;
-    transition: color 0.3s;
+.pages {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
 }
 
-
-.icons {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: space-between;
+.pages a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #282828;
+  font-size: 1rem;
+  transition: color 0.3s;
 }
 
-.icons a,
-.icons .hamburger {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none;
-    color: #282828;
-    font-size: 1rem;
-    transition: color 0.3s;
-}
-
-.hamburger:hover {
-    cursor: pointer;
+.divider {
+  margin-top: 1rem;
+  border-top: 1px solid #eeeeee;
 }
 </style>

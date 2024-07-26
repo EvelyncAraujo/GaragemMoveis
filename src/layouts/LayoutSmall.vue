@@ -1,14 +1,12 @@
-<script setup>
-  import SmallHeader from '@/components/templates/small/SmallHeader.vue';
+<script setup>  
   import SmallFooter from '@/components/templates/small/SmallFooter.vue';
+  import LogoTitle from '../components/templates/LogoTitle.vue'
 </script>
 
 <template>
   <div id="layout-small">
-    <header>
-      <small-header />
-    </header>
     <main>
+      <logo-title/>
       <router-view />
     </main>
     <footer>
@@ -16,6 +14,7 @@
     </footer>
   </div>
 </template>
+
 <style scoped>
 #layout-small {
   min-height: 100vh;
@@ -28,7 +27,7 @@ header {
   justify-content: space-between;
   padding: 1.5rem;
   border-bottom: #eeeeee 2px solid;
-  background-color: rgb(109, 108, 108);
+  background-color: white;
 
   z-index: 10;
   position: fixed;

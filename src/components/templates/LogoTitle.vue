@@ -1,8 +1,7 @@
 <script setup></script>
 <template>
   <div class="logo">
-    <img src="@/assets/logo.png" alt="FakeStore Logo" />
-    <h2>Garagem   </h2>
+    <img src="@/assets/logo.png" alt="Garagem Logo" />
   </div>
 </template>
 
@@ -15,15 +14,10 @@
 }
 
 .logo img {
-  width: 3rem;
-  height: 3rem;
+  width: 6rem;
+  height: 6rem;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.logo h2 {
-  font-family: 'Belleza', sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
 </style>

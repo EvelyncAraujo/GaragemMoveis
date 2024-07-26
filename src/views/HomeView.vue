@@ -26,5 +26,5 @@ onMounted(() => {
 </script>
 
 <template>
-  <product-list />
+    <RouterLink/>
 </template>
