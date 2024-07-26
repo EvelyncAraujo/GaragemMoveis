@@ -1,11 +1,16 @@
 <script setup>
-import { ref, reactive } from "vue";
+import { ref, reactive, onMounted } from "vue";
 import CategoriasApi from "@/api/categorias";
 const categoriasApi = new CategoriasApi();
 
 const defaultCategoria = { id: null, descricao: "" };
 const categorias = ref([]);
 const categoria = reactive({ ...defaultCategoria });
+
+onMounted(async () => {
+  categorias.value = await categoriasApi.buscarTodasAsCategorias();
+});
+
 
 function limpar() {
   Object.assign(categoria, { ...defaultCategoria });

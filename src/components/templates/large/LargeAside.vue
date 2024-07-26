@@ -24,12 +24,17 @@ const authStore = useAuthStore();
 </template>
 
 <style scoped>
+.logo_and_menu{
+  box-shadow: 1px 10px 10px #888888;
+
+}
 .mb-2 {
   margin-bottom: 1.5rem;
 }
 
 .menu {
-  padding: 3rem;
+  padding: 2rem;
+
 }
 
 .menu a {
@@ -39,11 +44,12 @@ const authStore = useAuthStore();
   color: #000000;
   gap: 1rem;
   font-size: 1.3rem;
-  margin-top: 2.2rem;
+  margin-top: 1rem;
+  
 }
 
 .divider {
   margin-top: 1rem;
-  border-top: 1px solid #eeeeee;
+  border-top: 1px solid #97006a;
 }
 </style>

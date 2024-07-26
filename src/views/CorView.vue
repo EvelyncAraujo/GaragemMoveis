@@ -1,55 +1,52 @@
 <script setup>
-import { ref, reactive, onMounted } from "vue";
-import CoresApi from "@/api/cores";
-const coresApi = new CoresApi();
+import { ref, reactive, onMounted } from 'vue'
+import CoresApi from '@/api/cores'
+const coresApi = new CoresApi()
 
-const defaultcor = { id: null, descricao: "" };
-const cores = ref([]);
-const cor = reactive({ ...defaultcor });
+const defaultCor = { id: null, nome: '' }
+const cores = ref([])
+const cor = reactive({ ...defaultCor })
 
 onMounted(async () => {
-  cores.value = await coresApi.buscarTodasAscores();
-});
+  cores.value = await coresApi.buscarTodasAsCores()
+})
 
 function limpar() {
-  Object.assign(cor, { ...defaultcor });
+  Object.assign(cor, { ...defaultCor })
 }
 
 async function salvar() {
   if (cor.id) {
-    await coresApi.atualizarcor(cor);
+    await coresApi.atualizarCor(cor)
   } else {
-    await coresApi.adicionarcor(cor);
+    await coresApi.adicionarCor(cor)
   }
-  cores.value = await coresApi.buscarTodasAscor();
-  limpar();
+  cores.value = await coresApi.buscarTodasAsCores()
+  limpar()
 }
 
 function editar(cor_para_editar) {
-  Object.assign(cor, cor_para_editar);
+  Object.assign(cor, cor_para_editar)
 }
 
 async function excluir(id) {
-  await coresApi.excluircor(id);
-  cores.value = await coresApi.buscarTodasAscores();
-  limpar();
+  await coresApi.excluirCor(id)
+  cores.value = await coresApi.buscarTodasAsCores()
+  limpar()
 }
 </script>
 
 <template>
-  <h1>cor</h1>
-  <hr />
+  <h1>Cores</h1>
   <div class="form">
-    <input type="text" v-model="cor.descricao" placeholder="Descrição" />
+    <input type="text" v-model="cor.nome" placeholder="Descrição" />
     <button @click="salvar">Salvar</button>
     <button @click="limpar">Limpar</button>
   </div>
   <hr />
   <ul>
     <li v-for="cor in cores" :key="cor.id">
-      <span @click="editar(cor)">
-        ({{ cor.id }}) - {{ cor.descricao }} -
-      </span>
+      <span @click="editar(cor)"> ({{ cor.id }}) - {{ cor.nome }} - </span>
       <button @click="excluir(cor.id)">X</button>
     </li>
   </ul>

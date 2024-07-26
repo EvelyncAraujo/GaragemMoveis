@@ -8,15 +8,16 @@
 <style scoped>
 .logo {
   display: flex;
-  padding-left: 3rem;
+  padding-left: 2rem;
   gap: 1rem;
   align-items: center;
 }
 
 .logo img {
-  width: 6rem;
-  height: 6rem;
-  border-radius: 50%;
+  width: 10rem;
+  height: 10rem;
+  margin-bottom: 2rem;
+  border-radius: 2rem;
   object-fit: cover;
 }
 

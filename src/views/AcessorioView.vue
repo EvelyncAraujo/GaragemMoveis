@@ -54,4 +54,12 @@ async function excluir(id) {
   </ul>
 </template>
 
-<style></style>
+<style>
+button{
+background-color: rgba(255, 0, 234, 0.527);
+border: none;
+border-radius: 2px;
+margin-left: 0.5rem;
+}
+
+</style>

@@ -3,16 +3,16 @@ import { ref, reactive, onMounted } from "vue";
 import MarcasApi from "@/api/marcas";
 const marcasApi = new MarcasApi();
 
-const defaultmarca = { id: null, nome: "" };
+const defaultMarca = { id: null, nome: "" };
 const marcas = ref([]);
-const marca = reactive({ ...defaultmarca });
+const marca = reactive({ ...defaultMarca });
 
 onMounted(async () => {
-  marcas.value = await marcasApi.buscarMarca();
+  marcas.value = await marcasApi.buscarTodasAsMarcas();
 });
 
 function limpar() {
-  Object.assign(marca, { ...defaultmarca });
+  Object.assign(marca, { ...defaultMarca });
 }
 
 async function salvar() {
@@ -21,7 +21,7 @@ async function salvar() {
   } else {
     await marcasApi.adicionarMarca(marca);
   }
-  marca.value = await marcasApi.buscarMarca();
+  marcas.value = await marcasApi.buscarTodasAsMarcas();
   limpar();
 }
 
@@ -31,16 +31,15 @@ function editar(marca_para_editar) {
 
 async function excluir(id) {
   await marcasApi.excluirMarca(id);
-  marcas.value = await marcasApi.buscarMarca();
+  marcas.value = await marcasApi.buscarTodasAsMarcas();
   limpar();
 }
 </script>
 
 <template>
-  <h1>marca</h1>
-  <hr />
+  <h1>Marcas</h1>
   <div class="form">
-    <input type="text" v-model="marca.nome" placeholder="Descrição" />
+    <input type="text" v-model="marca.nome" placeholder="Nome" />
     <button @click="salvar">Salvar</button>
     <button @click="limpar">Limpar</button>
   </div>
